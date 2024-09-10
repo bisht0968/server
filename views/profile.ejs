@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    Profile
+    <a href="/auth/logout">Logout</a>
+
+    <form action="/account/create" method="post">
+        <input type="text" name="accountNumber" placeholder="Enter Acocunt Number">
+        <hr>
+        <select name="accountType">
+            <option value="Savings">Savings</option>
+            <option value="Current">Current</option>
+        </select>
+        <hr>
+        <input type="number" name="balance" value="0">
+        <hr>
+        <button type="submit">Create Account</button>
+    </form>
+
+    <hr>
+
+
+
+    <h3>Account Details</h3>
+    <a href="/account/getaccount/divya">Get Account Details</a>
+
+    <h3>Update</h3>
+    <form action="/account/update/divya" method="post">
+        <select name="accountType">
+            <option value="Savings">Savings</option>
+            <option value="Current">Current</option>
+        </select>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <h3>Delete Account</h3>
+    <a href="/account/delete/8908">Delete Account</a>
+
+    <h3>Deposit</h3>
+    <form action="/transaction/deposit" method="post">
+        <input type="text" name="accountNumber" placeholder="Enter Account Number">
+        <hr>
+        <input type="number" name="amount" placeholder="Enter Balance">
+        <hr>
+        <button type="submit">Deposit</button>
+    </form>
+
+    <h3>Withdrawal</h3>
+    <form action="/transaction/withdrawal" method="post">
+        <input type="text" name="accountNumber" placeholder="Enter Account Number">
+        <hr>
+        <input type="number" name="amount" placeholder="Enter Balance">
+        <hr>
+        <button type="submit">Withdrawal</button>
+    </form>
+
+    <h3>All Accounts</h3>
+    <a href="/account/accounts">Get All Accounts</a>
+
+    <h3>Transer Money</h3>
+    <form action="/transaction/transfer" method="post">
+        <input type="text" name="sourceAccountNumber" placeholder="Source Account Number">
+        <hr>
+        <input type="text" name="destinationAccountNumber" placeholder="Destination Account Number">
+        <hr>
+        <input type="number" name="amount" placeholder="Amount">
+        <button type="submit">Transfer</button>
+    </form>
+
+
+    <h3>All Transactions</h3>
+    <a href="/transaction/alltransactions/divya">Get Transactions History</a>
+
+</body>
+
+</html>
