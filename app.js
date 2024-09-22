@@ -9,8 +9,13 @@ var usersRouter = require('./routes/user/userRoutes');
 var authRoutes = require('./routes/auth/authRoutes')
 var accountRoutes = require('./routes/account/accountRoutes');
 var transactionRoutes = require('./routes/transaction/transactionRoutes');
+var adminRoutes = require('./routes/admin/adminRoutes');
+const employerRoutes = require('./routes/employer/employerRoutes');
 
-var userModel = require('./models/user')
+const db = require("./config/db");
+db();
+
+require('./config/passportConfig');
 
 const passport = require("passport");
 const session = require("express-session");
@@ -31,8 +36,6 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.serializeUser(userModel.serializeUser())
-passport.deserializeUser(userModel.deserializeUser())
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -45,6 +48,8 @@ app.use('/user', usersRouter);
 app.use('/auth', authRoutes);
 app.use('/account', accountRoutes);
 app.use('/transaction', transactionRoutes);
+app.use('/admin', adminRoutes);
+app.use('/employer', employerRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

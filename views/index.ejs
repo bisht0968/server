@@ -62,9 +62,15 @@
                 <form action="/auth/login" method="post">
                     <input type="text" name="username" placeholder="Enter your username">
                     <input type="password" name="password" placeholder="*******">
+                    <select name="role">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
                     <button type="submit">Submit</button>
                 </form>
     </div>
+
+    <a href="/admin/signup">Admin</a>
 </body>
 
 </html>

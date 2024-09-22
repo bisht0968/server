@@ -1,18 +1,14 @@
 const passport = require("passport");
-const localStrategy = require("passport-local");
 
 const { isLoggedIn } = require("../middlewares/authMiddleware");
 
 const userModel = require("../models/user");
 
-passport.use(new localStrategy(userModel.authenticate()));
-
-
 const register = function (req, res) {
     try {
         let userData = new userModel({
             username: req.body.username,
-            role: req.body.role,
+            role: "User",
             fullname: req.body.fullname,
             phonenumber: req.body.phonenumber,
             email: req.body.email,
@@ -26,7 +22,7 @@ const register = function (req, res) {
         });
 
         userModel.register(userData, req.body.password).then(function () {
-            passport.authenticate("local")(req, res, function () {
+            passport.authenticate("user-local")(req, res, function () {
                 res.redirect("/user/profile")
             })
         });
@@ -36,15 +32,24 @@ const register = function (req, res) {
     }
 };
 
-const login = passport.authenticate("local", {
-    successRedirect: "/user/profile",
-    failureRedirect: "/",
-    failureFlash: true
-});
+const login = function (req, res, next) {
+    try {
+        passport.authenticate("user-local", {
+            successRedirect: "/user/profile",
+            failureRedirect: "/",
+            failureFlash: true
+        })(req, res, next);
+
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Server Error");
+    }
+
+};
+
 
 const logout = function (req, res, next) {
     try {
-
         req.logout(function (err) {
             if (err) {
                 return next(err);

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Register</title>
+
+    <style>
+        body {
+            background-color: rgb(185, 185, 185);
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Admin Register</h1>
+        <form action="/admin/register" method="post">
+            <input type="text" name="username" placeholder="Enter your username">
+            <hr>
+            <input type="password" name="password" placeholder="*******">
+            <hr>
+            <hr>
+            <input type="email" name="email" placeholder="email">
+            <hr>
+            <input type="text" name="fullname" placeholder="Fullname">
+            <hr>
+            <input type="text" name="phonenumber" placeholder="phone Number">
+            <hr>
+            <input type="text" name="street" placeholder="Street">
+            <hr>
+            <input type="text" name="city" placeholder="City">
+            <hr>
+            <input type="text" name="state" placeholder="State">
+            <hr>
+            <input type="number" name="pinCode" placeholder="PinCode">
+            <hr>
+            <input type="date" name="dateOfBirth" placeholder="dob">
+            <hr>
+            <select name="adminType">
+                <option value="Manager">Manager</option>
+                <option value="SuperAdmin">SuperAdmin</option>
+                <option value="Auditor">Auditor</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="container">
+
+        <h1>Admin Login</h1>
+        <% if (error && error.length> 0) { %>
+            <p>
+                <%= error[0] %>
+            </p>
+            <% } %>
+                <form action="/admin/login" method="post">
+                    <input type="text" name="username" placeholder="Enter your username">
+                    <input type="password" name="password" placeholder="*******">
+                    <button type="submit">Submit</button>
+                </form>
+    </div>
+    <div class="container">
+
+        <h1>Employer Register</h1>
+        <form action="/employer/register" method="post">
+            <input type="text" name="username" placeholder="Enter your username">
+            <hr>
+            <input type="password" name="password" placeholder="*******">
+            <hr>
+            <hr>
+            <input type="email" name="email" placeholder="email">
+            <hr>
+            <input type="text" name="fullname" placeholder="Fullname">
+            <hr>
+            <input type="text" name="phoneNumber" placeholder="phone Number">
+            <hr>
+            <input type="text" name="street" placeholder="Street">
+            <hr>
+            <input type="text" name="city" placeholder="City">
+            <hr>
+            <input type="text" name="state" placeholder="State">
+            <hr>
+            <input type="number" name="pinCode" placeholder="PinCode">
+            <hr>
+            <input type="date" name="dob" placeholder="dob">
+            <hr>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="container">
+
+        <h1>Employer Login</h1>
+        <% if (error && error.length> 0) { %>
+            <p>
+                <%= error[0] %>
+            </p>
+            <% } %>
+                <form action="/employer/login" method="post">
+                    <input type="text" name="username" placeholder="Enter your username">
+                    <input type="password" name="password" placeholder="*******">
+                    <button type="submit">Submit</button>
+                </form>
+    </div>
+
+    <a href="/">User</a>
+</body>
+
+</html>
